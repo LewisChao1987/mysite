@@ -1,9 +1,12 @@
 package com.buzz.mysite.controller;
 
 import com.buzz.mysite.pojo.Account;
+import com.buzz.mysite.until.token.SessionImpl;
+import com.buzz.mysite.until.token.TokenHelper;
 import org.springframework.jca.cci.connection.NotSupportedRecordFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,6 +19,7 @@ import java.util.Map;
 @RestController(value = "login")
 @RequestMapping(value = "login")
 public class LoginController {
+    TokenHelper tokenHelper = new SessionImpl();
     @RequestMapping(method = RequestMethod.GET,path = {"index","*"})
     public ModelAndView index() {
         Account account = new Account();
@@ -36,6 +40,7 @@ public class LoginController {
             message.setCode("456");
             message.setMsg("shit");
         }
+
         return message;
     }
 }
