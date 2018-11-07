@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="/layout"><!-- layout文件路径-->
+<head>
+    <title>首页</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h4>hello everyone!</h4>
+    <h5 th:text="${name}"></h5>
+    <p><a th:href="@{~/register/}" th:text="用户注册" ></a></p>
+</div>
+</body>
+</html>

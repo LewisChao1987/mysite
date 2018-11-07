@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="/layout"><!-- layout文件路径-->
+<head>
+    <title>用户注册</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <form class="layui-form" th:action="@{add}" th:method="post">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名：<input th:value="${account.account}" type="text"   lay-verify="title" class="layui-input" name="account"/>
+            </label>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名：     <input th:value="${account.name}" type="text"   lay-verify="title" class="layui-input" name="name"/>
+                <span th:text="${nameValid}"></span> </label>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码： <input th:value="${account.password}" type="text"   lay-verify="title" class="layui-input" name="password"/></label>
+            <th:block th:text="${passwordValid}"></th:block></div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别： <select name="sex" lay-filter="aihao">
+                <option value="1">男</option>
+                <option value="2">女</option>
+            </select></label>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">单行选择框：<select name="interest" lay-filter="aihao">
+                <option value=""></option>
+                <option value="0">写作</option>
+                <option value="1" selected="">阅读</option>
+                <option value="2">游戏</option>
+                <option value="3">音乐</option>
+                <option value="4">旅行</option>
+            </select></label>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

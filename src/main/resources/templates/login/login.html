@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="/layout"><!-- layout文件路径-->
+<head>
+    <title>用户注册</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <form class="layui-form" action="do" th:method="post" id="loginform">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名：<input th:value="${account.account}" type="text"   lay-verify="title" class="layui-input" name="account"/>
+            </label>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码： <input th:value="${account.password}" type="text"   lay-verify="title" class="layui-input" name="password"/></label>
+            <th:block th:text="${passwordValid}"></th:block></div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">登录</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+
+    </form>
+    <script>
+
+        $(function(){
+            $("form").unbind("submit").bind("submit",function () {
+                alert("sdsd");
+
+                return true;
+            })
+        })
+    </script>
+</div>
+</body>
+</html>
