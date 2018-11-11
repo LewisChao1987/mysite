@@ -1,13 +1,18 @@
 package com.buzz.mysite.until.session;
 
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+
+
+
 public class RedisImpl implements  SessionHelper {
     private String appId;
-    private String sessionId;
+    private String jSessionId;
     private RedisSource redisSource;
 
-    public RedisImpl(String appId, String sessionId,RedisSource source) {
+    public RedisImpl(String appId,RedisSource source) {
         this.appId = appId;
-        this.sessionId = sessionId;
+       // this.jSessionId = RequestContextHolder.getRequestAttributes().getSessionId();
         this.redisSource =source;
     }
 
@@ -20,12 +25,12 @@ public class RedisImpl implements  SessionHelper {
         this.appId = appId;
     }
 
-    public String getSessionId() {
-        return sessionId;
+    public String getjSessionId() {
+        return jSessionId;
     }
 
-    public void setSessionId(String sessionId) {
-        this.sessionId = sessionId;
+    public void setjSessionId(String jSessionId) {
+        this.jSessionId = jSessionId;
     }
     //#endregion
 
@@ -45,7 +50,18 @@ public class RedisImpl implements  SessionHelper {
      */
     @Override
     public Object get(String attributeName) {
-        return null;
+        StringBuilder stringBuilder  = new StringBuilder();
+        stringBuilder.append("appid is :");
+        stringBuilder.append(appId);
+        stringBuilder.append(",redis host is :");
+        stringBuilder.append(redisSource.getHost());
+        stringBuilder.append(",user is :");
+        stringBuilder.append(redisSource.getUser());
+        stringBuilder.append(",password is :");
+        stringBuilder.append(redisSource.getPassword());
+        stringBuilder.append(",prot is :");
+        stringBuilder.append(redisSource.getPort());
+        return  stringBuilder.toString();
     }
 
     /**

@@ -1,8 +1,10 @@
 package com.buzz.mysite.until.session;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpSession;
+
 
 public class LocalImpl implements  SessionHelper {
 

@@ -1,4 +1,9 @@
 spring:
+  security:
+    user:
+      name: user
+      password: 123
+
   thymeleaf:
     suffix: .html
     cache: false
@@ -6,3 +11,9 @@ spring:
     enabled: true
   mvc:
     static-path-pattern: /static/**
+  test:
+     name: 123
+     value: 456
+redis:
+    host: 192.168.1.123
+    password: 123

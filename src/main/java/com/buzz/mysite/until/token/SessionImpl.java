@@ -1,12 +1,14 @@
 package com.buzz.mysite.until.token;
 
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.UUID;
 
+@Component
 public class SessionImpl  implements TokenHelper {
     public  HttpSession session;
     public  SessionImpl() {

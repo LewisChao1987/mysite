@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd" >
+<import resource="redis.xml" />
+<bean id="redisImpl" class="com.buzz.mysite.until.session.RedisImpl" autowire="constructor"  primary="true">
+    <constructor-arg ref="redisSource" index="1"></constructor-arg>
+    <constructor-arg index="0" value="appid"></constructor-arg>
+    <qualifier value="redis"></qualifier>
+</bean>
+    <bean id="sessionHelper2" class="com.buzz.mysite.until.session.LocalImpl">
+        <qualifier value="local"/>
+    </bean>
+</beans>
