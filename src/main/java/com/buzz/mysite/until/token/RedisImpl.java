@@ -1,23 +1,25 @@
 package com.buzz.mysite.until.token;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+
 public class RedisImpl   implements  TokenHelper {
     @Override
-    public String getToken(String appId, String tokenName) {
+    public String getToken(JSession jSession) {
         return null;
     }
 
     @Override
-    public boolean verfiyToken(String appId, String tokenName, String token, boolean removeIt) {
+    public boolean verfiyToken(JSession jSession, boolean removeIt) {
         return false;
     }
 
     @Override
-    public boolean removeToken(String appId, String tokenName, String token) {
+    public boolean removeToken(JSession jSession) {
         return false;
     }
 
     @Override
-    public String addToken(String appId, String tokenName, String token) {
+    public String addToken(JSession jSession) {
         return null;
     }
 }

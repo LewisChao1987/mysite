@@ -1,6 +1,5 @@
 package com.buzz.mysite.pojo;
 
-import com.sun.xml.internal.ws.developer.Serialization;
 import groovy.transform.Field;
 import org.springframework.util.SerializationUtils;
 import org.thymeleaf.model.IAttribute;
@@ -17,7 +16,7 @@ public class Account  implements Serializable {
     private int id;
     @NotEmpty
     private String name;
-    @NotEmpty
+    @NotEmpty(message = "不能为空")
     private String password;
     @NotNull
     private String sex;

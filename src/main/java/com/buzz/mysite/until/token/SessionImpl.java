@@ -1,6 +1,8 @@
 package com.buzz.mysite.until.token;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -10,6 +12,7 @@ import java.util.UUID;
 
 @Component
 public class SessionImpl  implements TokenHelper {
+    @Autowired
     public  HttpSession session;
     public  SessionImpl() {
         try {
@@ -19,21 +22,27 @@ public class SessionImpl  implements TokenHelper {
         }
     }
     @Override
-    public String getToken(String appId, String tokenName) {
-        String token = UUID.randomUUID().toString().replace("-", "").toLowerCase();
-        return this.addToken(appId,tokenName,token);
+    public String getToken(JSession jSession) {
+        Object  object=  session.getAttribute(jSession.getTokenName());
+        if (object==null)
+            return null;
+        else
+        {
+            return  object.toString();
+        }
     }
 
     @Override
-    public boolean verfiyToken(String appId, String tokenName, String token, boolean removeIt) {
-        Object obj =   session.getAttribute(tokenName);
+    public boolean verfiyToken(JSession jSession, boolean removeIt) {
+        Object obj =   session.getAttribute(jSession.getTokenName());
         if (obj==null)
         {
             return  false;
         }
+        String token = jSession.getToken();
         if (token.equals(obj.toString())) {
             if (removeIt) {
-                this.removeToken(appId,tokenName,token);
+                this.removeToken(jSession);
             }
             return  true;
         }
@@ -41,14 +50,14 @@ public class SessionImpl  implements TokenHelper {
     }
 
     @Override
-    public boolean removeToken(String appId, String tokenName, String token) {
-        session.removeAttribute(tokenName);
+    public boolean removeToken(JSession jSession) {
+        session.removeAttribute(jSession.getTokenName());
         return true;
     }
 
     @Override
-    public String addToken(String appId, String tokenName, String token) {
-        session.setAttribute(tokenName,token);
-        return  token;
+    public String addToken(JSession jSession) {
+        session.setAttribute(jSession.getTokenName(),jSession.getToken());
+        return  jSession.getToken();
     }
 }
