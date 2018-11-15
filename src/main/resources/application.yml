@@ -3,7 +3,6 @@ spring:
     user:
       name: user
       password: 123
-
   thymeleaf:
     suffix: .html
     cache: false
@@ -17,3 +16,5 @@ spring:
 redis:
     host: 192.168.1.123
     password: 123
+mybatis:
+  check-config-location: true
