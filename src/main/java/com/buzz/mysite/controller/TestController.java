@@ -21,7 +21,7 @@ public class TestController {
         String sql = "select  * from product  limit 1,1";
         Product product = new JdbcUntil<Product>().getSingle(sql,Product.class);
 
-        System.out.println(product.getPrice());
+        //System.out.println(product.getPrice());
     }
 
     public static class NestedClazz implements Nested, Comparable<Nested> {
