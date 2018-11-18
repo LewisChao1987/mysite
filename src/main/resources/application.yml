@@ -1,4 +1,13 @@
 spring:
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://47.105.95.251:3306/buzz
+    username: buzzuser
+    password: 96mhLv0SvKKosdaM
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+profiles:
   security:
     user:
       name: user
@@ -10,9 +19,6 @@ spring:
     enabled: true
   mvc:
     static-path-pattern: /static/**
-  test:
-     name: 123
-     value: 456
 redis:
     host: 192.168.1.123
     password: 123
