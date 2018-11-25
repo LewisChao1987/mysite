@@ -25,11 +25,15 @@ import java.util.Base64;
 public class HomeController {
    @Autowired
    public HttpSession session;
-   @Autowired()
-   @Qualifier("redis")
+
    SessionHelper sessionHelper;
 
    String userName;
+
+   public  HomeController(@Qualifier("redis") SessionHelper helper)
+   {
+      this.sessionHelper =helper;
+   }
 
 @RequestMapping(method = RequestMethod.GET,value = {"","index"})
    public  ModelAndView index() throws UnsupportedEncodingException {
