@@ -24,3 +24,6 @@ redis:
     password: 123
 mybatis:
   check-config-location: true
+  typeAliasesPackage: com.buzz.mysite.model
+  mapperLocations: classpath:mapper/*.xml
+

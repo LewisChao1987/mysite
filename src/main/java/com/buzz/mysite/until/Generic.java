@@ -17,15 +17,15 @@ class B extends A {};
 interface  C {};
 class  D implements C{};
 class Test {
-    public static<T extends A> void method(T a) {
+    public static <T extends A> void method(T a) {
         List<? super A> list = new ArrayList<>();
         list.add(new B());
     }
 
-    public  static<T extends A> void method1(T a)
-    {
+    public static <T extends A> void method1(T a) {
         return;
     }
+
     public static void main(String[] args) {
         Test.method(new B());
     }
